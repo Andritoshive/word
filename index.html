@@ -33,20 +33,35 @@
 }
 </style>
 
-<button class="button button1" onclick="countClicks()">Money</button>
+<button class="button button1" onclick="countClicks()">$</button>
 <p>You Have: <span id="clickCount">0</span>$</p>
  <button onclick="hireChef()">Hire Chef [<span id="chefCost">15</span>] -- <span id="chefs">0</span></button>
 <p> </p>
-  <button onclick="hireCashier()">Hire Cashier [<span id="cashierCost">100</span>] -- <span>0</button>
+  <button onclick="hireCashier()">Hire Cashier [<span id="cashierCost">100</span>] -- <span id="cashiers">0</button>
+  <p> </p>
+  <button onclick="buykk()">Buy Krusty Krab [<span id="cashierCost">10k</span>] -- <span>0</button>
 <script>
 var chefCost = 15;
 var chefs = 0;
 var cashierCost = 100;
 var cashiers = 0;
+var kkC = 10000;
+var kks = 0;
+function buyKK() {
+	if (count >= kkC) {
+    	count = count - kkC;
+        kks = kks + 1;
+        kkC = Math.round(kkC * 1.2)
+        document.getElementById("clickCount").innerText = count;
+        document.getElementById("kkCost").innerText = kkCost;
+        document.getElementById("kks").innerText = kks;
+    }
+}
 function hireCashier() {
 	if (count >= cashierCost) {
     	count = count - cashierCost;
         cashiers = cashiers + 1;
+        cashierCost = Math.round(cashierCost * 1.2)
         document.getElementById("clickCount").innerText = count;
         document.getElementById("cashierCost").innerText = cashierCost;
         document.getElementById("cashiers").innerText = cashiers;
@@ -56,12 +71,13 @@ function hireChef() {
 	if (count >= chefCost) {
     	count = count - chefCost;
         chefs = chefs + 1;
+        chefCost = Math.round(chefCost * 1.2)
         document.getElementById("clickCount").innerText = count;
         document.getElementById("chefCost").innerText = chefCost;
         document.getElementById("chefs").innerText = chefs;
     }
 }
-var count = 0;
+var count = 100000000;
 
 function countClicks() {
   count++;
@@ -72,9 +88,13 @@ function countClicks() {
 setInterval (function() {
 count = count + chefs;
 document.getElementById("clickCount").innerText = count;
-}, 1000) ; // 1000ms = 1s
+}, 1000) ;
 setInterval (function() {
 count = count + cashiers * 2;
+document.getElementById("clickCount").innerText = count;
+}, 1000) ;
+setInterval (function() {
+count = count + kks * 5;
 document.getElementById("clickCount").innerText = count;
 }, 1000) ; // 1000ms = 1s
 </script>
