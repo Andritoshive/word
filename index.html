@@ -36,9 +36,22 @@
 <button class="button button1" onclick="countClicks()">Money</button>
 <p>You Have: <span id="clickCount">0</span>$</p>
  <button onclick="hireChef()">Hire Chef [<span id="chefCost">15</span>] -- <span id="chefs">0</span></button>
+<p> </p>
+  <button onclick="hireCashier()">Hire Cashier [<span id="cashierCost">100</span>] -- <span>0</button>
 <script>
 var chefCost = 15;
 var chefs = 0;
+var cashierCost = 100;
+var cashiers = 0;
+function hireCashier() {
+	if (count >= cashierCost) {
+    	count = count - cashierCost;
+        cashiers = cashiers + 1;
+        document.getElementById("clickCount").innerText = count;
+        document.getElementById("cashierCost").innerText = cashierCost;
+        document.getElementById("cashiers").innerText = cashiers;
+    }
+}
 function hireChef() {
 	if (count >= chefCost) {
     	count = count - chefCost;
@@ -58,6 +71,10 @@ function countClicks() {
 
 setInterval (function() {
 count = count + chefs;
+document.getElementById("clickCount").innerText = count;
+}, 1000) ; // 1000ms = 1s
+setInterval (function() {
+count = count + cashiers * 2;
 document.getElementById("clickCount").innerText = count;
 }, 1000) ; // 1000ms = 1s
 </script>
