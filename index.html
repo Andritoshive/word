@@ -2,11 +2,12 @@
 <html>
 <body style="text-align: center;">
     <h1 style="color: red;">
-        MoneyClicker
+        Mr Crabs Simulator
     </h1>
     <h4>
-    Click the button to get started
+    Click the button to make money.
     </h4>
+</button>
 <style>
 .button {
   border: none;
@@ -34,15 +35,33 @@
 
 <button class="button button1" onclick="countClicks()">Money</button>
 <p>You Have: <span id="clickCount">0</span>$</p>
-
+ <button onclick="hireChef()">Hire Chef [<span id="chefCost">15</span>] -- <span id="chefs">0</span></button>
 <script>
-let count = 0;
+var chefCost = 15;
+var chefs = 0;
+function hireChef() {
+	if (count >= chefCost) {
+    	count = count - chefCost;
+        chefs = chefs + 1;
+        document.getElementById("clickCount").innerText = count;
+        document.getElementById("chefCost").innerText = chefCost;
+        document.getElementById("chefs").innerText = chefs;
+    }
+}
+var count = 0;
 
 function countClicks() {
   count++;
   document.getElementById("clickCount").innerText = count;
 }
+
+
+setInterval (function() {
+count = count + chefs;
+document.getElementById("clickCount").innerText = count;
+}, 1000) ; // 1000ms = 1s
 </script>
-    </script>
+
+	</script>
 </body>
 </html>
