@@ -39,7 +39,7 @@
 <p> </p>
   <button onclick="hireCashier()">Hire Cashier [<span id="cashierCost">100</span>] -- <span id="cashiers">0</button>
   <p> </p>
-  <button onclick="buykk()">Buy Krusty Krab [<span id="cashierCost">10k</span>] -- <span>0</button>
+  <button onclick="buyKK()">Buy Krusty Krab [<span id="kkC">10000</span>] -- <span id="kks">0</button>
 <script>
 var chefCost = 15;
 var chefs = 0;
@@ -51,9 +51,9 @@ function buyKK() {
 	if (count >= kkC) {
     	count = count - kkC;
         kks = kks + 1;
-        kkC = Math.round(kkC * 1.2)
+        kkC = Math.round(kkC * 5)
         document.getElementById("clickCount").innerText = count;
-        document.getElementById("kkCost").innerText = kkCost;
+        document.getElementById("kkC").innerText = kkC;
         document.getElementById("kks").innerText = kks;
     }
 }
